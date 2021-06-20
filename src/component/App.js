@@ -1,5 +1,13 @@
 import React from 'react';
-import AuthProvider from './context/AuthContest';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+
+} from "react-router-dom";
+import Dashboard from './Dashboard';
+import ForgetPassword from './ForgetPassword';
+import Login from './Login';
 import SingupMethod from './SingupMethod';
 
 
@@ -7,18 +15,33 @@ import SingupMethod from './SingupMethod';
 function App() {
   
   return( 
-    <AuthProvider>
+    
         <div className='container'>
         <div className="row">
           <div className="col-lg-2"></div>
           <div className="col-lg-8">
-          <SingupMethod></SingupMethod>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias dignissimos eius reiciendis quae animi nihil reprehenderit, commodi quia maxime laboriosam eum cumque exercitationem quod recusandae ea. Quas sed doloribus temporibus?</p>
+          <Router>
+            <Switch>
+              <Route exact path="/dashboard">
+              <Dashboard></Dashboard>
+              </Route>
+              <Route exact path="/signup">
+              <SingupMethod></SingupMethod>
+              </Route>
+              <Route exact path="/login">
+              <Login></Login>
+              </Route>
+              <Route exact path="/forget-password">
+              <ForgetPassword></ForgetPassword>
+              </Route>
+            </Switch>
+          </Router>
+          
           </div>
           <div className="col-lg-2"></div>
         </div>
         </div>
-        </AuthProvider>
+      
   )
 }
 
